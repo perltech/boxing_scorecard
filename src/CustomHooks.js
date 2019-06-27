@@ -5,17 +5,19 @@ const useFightForm = (callback) => {
         judge: "",
         fighter1: "",
         fighter2: "",
-        numberOfRounds: ""
+        numberOfRounds: "",
+        isSubmitted: false
     });
     const handleSubmit = (event) => {
       if (event) {
         event.preventDefault();
       }
+      inputs.isSubmitted = true;
       callback();
     }
     const handleInputChange = (event) => {
       event.persist();
-      setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+      setInputs((inputs) => ({...inputs, [event.target.name]: event.target.value}));
     }
     return {
       handleSubmit,
